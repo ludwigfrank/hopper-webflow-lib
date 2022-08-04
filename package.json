@@ -1,0 +1,31 @@
+{
+  "name": "hopper-webflow-lib",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/my-lib.umd.cjs",
+  "module": "./dist/my-lib.js",
+  "version": "1.0.0",
+  "author": "Ludwig Frank <mail@ludwigfrank.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "clipboard": "^2.0.11",
+    "dayjs": "^1.11.4",
+    "gsap": "^3.10.4",
+    "jquery": "^3.6.0",
+    "lodash": "^4.17.21",
+    "luxon": "^2.4.0",
+    "svelte": "^3.49.0",
+    "vite": "^2.9.13"
+  },
+  "devDependencies": {
+    "@types/gsap": "^3.0.0",
+    "@types/jquery": "^3.5.14"
+  }
+}

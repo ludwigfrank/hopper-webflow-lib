@@ -1,0 +1,56 @@
+import { AppStore } from '../store'
+import Countdown from '../classes/components/Countdown'
+import DealCollection from '../classes/containers/DealCollection'
+import Deal, { FreezeStatus } from '../classes/containers/Deal'
+
+const pluginDeals = (appStore: AppStore) => {
+  const { startStamp, endStamp } = appStore.dateTime
+
+  DealCollection.$elementRefs.each(function () {
+    const dealCollection = new DealCollection($(this))
+    const $dealCollectionWrapper = dealCollection.$ref.closest(
+      '.hp-deal-collection-wrapper'
+    )
+
+    // Countdown to show remaining time
+    new Countdown(dealCollection.getChildEl(Countdown.elementId), {
+      end: dealCollection.collectionEnd,
+      start: dealCollection.collectionStart,
+    })
+
+    // Countdown to update all classes of collection children
+    new Countdown($dealCollectionWrapper, {
+      end: dealCollection.collectionEnd,
+      start: dealCollection.collectionStart,
+    })
+
+    $dealCollectionWrapper
+      .find(`[bun-element="${Deal.elementId}"]`)
+      .each(function () {
+        const deal = new Deal($(this), {})
+
+        if (deal.cmsData.extensionDeeplink) {
+          deal.freezeStatus = FreezeStatus.Enabled
+        }
+
+        const $linkElement = deal.$ref.find('[bun-ref="card-link"]').eq(0)
+        const href = $linkElement.attr('href')
+
+        const url = new URL(window.location.origin + href)
+        url.searchParams.append(
+          'endtimestamp',
+          dealCollection.collectionEnd.toString()
+        )
+
+        $linkElement.attr('href', url.href)
+      })
+  })
+}
+
+try {
+  pluginDeals(window.appStore)
+} catch (error) {
+  // If anything goes wrong, hide the share club feature.
+  // Don't break the all of the javascript
+  console.log(error)
+}
