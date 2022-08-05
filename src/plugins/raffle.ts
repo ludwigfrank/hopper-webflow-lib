@@ -27,13 +27,18 @@ const initRaffle = (state: AppStore, opts: RaffleBoardOpts) => {
 
   if (window.util.getUrlParam('RaffleUS') === 'true') {
     $('[bun-ref="plugin-raffle"]').show()
+
+    if (!window.util.getUrlParam('shareLink')) {
+      $('[data-modal-trigger="ticket-share-locked"]').fadeOut()
+    }
+
     const refs = {
       $board: $('[bun-element="raffle-board"]'),
       $timer: $('[bun-element="raffle-board"]').find(
         '[bun-element="countdown"]'
       ),
     }
-
+    console.log('hello')
     const raffleBoardTimer = new Countdown(refs.$timer, {
       end: mockRaffleDraws[0].drawDate.getTime(),
     })
