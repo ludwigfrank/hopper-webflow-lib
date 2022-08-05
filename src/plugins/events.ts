@@ -16,7 +16,7 @@ function onTrackEvent(e: CustomEvent<TrackEventParams>) {
   if (event && window.webkit) {
     try {
       window.webkit.messageHandlers.track.postMessage({
-        event,
+        event: event,
         properties: properties ? properties : {},
       })
     } catch (error) {
