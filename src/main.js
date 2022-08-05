@@ -28,14 +28,12 @@ Add the following scripts to the webflow </body> tag to enable local development
 // import './modules/loot-box/streak'
 import './store/index'
 import './plugins/utils'
-import './plugins/modals'
 import './plugins/share'
+import './plugins/modals'
 import './plugins/deals'
 import './plugins/raffle'
 import './plugins/hero'
 import './plugins/dealExtension'
-
-// import './plugins/loot/reward'
 
 // initRaffle()
 // initDealExtension()

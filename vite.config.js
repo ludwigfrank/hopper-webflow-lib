@@ -8,6 +8,7 @@ const baseConfig = {
     rollupOptions: {
       input: {
         main: './src/main.js',
+        lootbox: './src/lootbox.js',
         /* 'plugins/modals': './src/plugins/modals.ts',
         'plugins/utils': './src/plugins/utils.ts',
         'plugins/deals': './src/plugins/deals.ts',
@@ -17,16 +18,17 @@ const baseConfig = {
         'plugins/dealExtension': './src/plugins/dealExtension.ts', */
       },
       output: {
-        format: 'umd',
-        entryFileNames: 'main.js',
+        // format: 'umd',
+        // entryFileNames: 'main.js',
         esModule: true,
         compact: true,
         globals: {
           jquery: '$',
           gsap: 'gsap',
+          clipboard: 'Clipboard',
         },
       },
-      external: ['jquery', 'gsap'],
+      external: ['jquery', 'gsap', 'clipboard'],
     },
   },
 }
