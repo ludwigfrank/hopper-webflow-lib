@@ -32,7 +32,7 @@ const updateShareToUnlock = (appStore: AppStore) => {
 
   const config = {
     shareLink: decodeURIComponent(getUrlParam('shareLink') as string),
-    isRevealed: getUrlParam('reveal'),
+    isRevealed: getUrlParam('reveal') === 'true',
   }
 
   const refs = {

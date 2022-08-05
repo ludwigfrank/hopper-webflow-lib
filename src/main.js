@@ -30,11 +30,12 @@ import './store/index'
 import './plugins/utils'
 import './plugins/modals'
 import './plugins/share'
-// import './plugins/loot/reward'
 import './plugins/deals'
 import './plugins/raffle'
 import './plugins/hero'
 import './plugins/dealExtension'
+
+// import './plugins/loot/reward'
 
 // initRaffle()
 // initDealExtension()
