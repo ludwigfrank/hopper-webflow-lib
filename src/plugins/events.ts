@@ -13,11 +13,11 @@ function onTrackEvent(e: CustomEvent<TrackEventParams>) {
   if (window.appStore.debug)
     console.log(`New event: ${EVENTS.Track}, ${e.detail.event}`)
 
-  if (event && properties && window.webkit) {
+  if (event && window.webkit) {
     try {
       window.webkit.messageHandlers.track.postMessage({
         event,
-        properties,
+        properties: properties ? properties : {},
       })
     } catch (error) {
       console.log(error)
