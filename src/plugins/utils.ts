@@ -66,6 +66,7 @@ const utils: Utils = {
   },
   getUrlParam: (param) => {
     const urlParams = new URLSearchParams(window.location.search)
+    console.log(urlParams.get('shareLink'))
     return urlParams.get(param)
   },
   addUrlParam: ({ url, param, value }) => {
