@@ -18,10 +18,10 @@ const baseConfig = {
       },
       output: {
         format: 'umd',
+        minify: true,
         entryFileNames: 'main.js',
         esModule: true,
         compact: true,
-        minify: true,
         globals: {
           jquery: '$',
           gsap: 'gsap',
