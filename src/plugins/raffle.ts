@@ -38,12 +38,17 @@ const initRaffle = (state: AppStore, opts: RaffleBoardOpts) => {
         '[bun-element="countdown"]'
       ),
     }
-    console.log('hello')
     const raffleBoardTimer = new Countdown(refs.$timer, {
       end: mockRaffleDraws[0].drawDate.getTime(),
     })
 
     dispatchTrackEvent('viewed_raffle_tiles')
+
+    $('[data-modal-trigger="ticket-share-locked"]').click(function () {
+      dispatchTrackEvent('opened_sharing_view', {
+        screen: 'DealDropsWebflow',
+      })
+    })
 
     $('[data-modal-trigger="raffle-explainer-modal"]').click(function () {
       dispatchTrackEvent('tapped_raffle_how_does_it_work')

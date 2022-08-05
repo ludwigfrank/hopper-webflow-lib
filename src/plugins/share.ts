@@ -66,7 +66,11 @@ const updateShareToUnlock = (appStore: AppStore) => {
   updateClassesOfStyled([shareSupport], 'share-support')
 
   if (shareSupport === ShareSupport.Full) {
+    // Event: share using navigator
     refs.$shareButtonNavigator.click(() => {
+      dispatchTrackEvent('tapped_share_to_unlock', {
+        type: 'navigator',
+      })
       navigator
         .share({
           title: shareMessageTitle,
@@ -84,6 +88,9 @@ const updateShareToUnlock = (appStore: AppStore) => {
       .val(config.shareLink)
       .attr('readonly', '')
       .click(function () {
+        dispatchTrackEvent('tapped_share_to_unlock', {
+          type: 'input',
+        })
         $(this).select()
       })
   }
@@ -94,6 +101,9 @@ const updateShareToUnlock = (appStore: AppStore) => {
     })
 
     clipboard.on('success', function (e) {
+      dispatchTrackEvent('tapped_share_to_unlock', {
+        type: 'clipboard',
+      })
       storeStatus.set(ShareStatus.Successful)
     })
   }

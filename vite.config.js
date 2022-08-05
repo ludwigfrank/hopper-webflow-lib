@@ -3,7 +3,7 @@ import { resolve } from 'path'
 
 const baseConfig = {
   build: {
-    minify: true,
+    minify: false,
     manifest: true,
     rollupOptions: {
       input: {
@@ -21,6 +21,7 @@ const baseConfig = {
         entryFileNames: 'main.js',
         esModule: true,
         compact: true,
+        minify: true,
         globals: {
           jquery: '$',
           gsap: 'gsap',
