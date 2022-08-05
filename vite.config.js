@@ -19,7 +19,7 @@ const baseConfig = {
       },
       output: {
         // format: 'umd',
-        // entryFileNames: 'main.js',
+        entryFileNames: 'main.js',
         esModule: true,
         compact: true,
         globals: {
