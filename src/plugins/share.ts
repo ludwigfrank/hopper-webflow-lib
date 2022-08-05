@@ -74,6 +74,7 @@ const updateShareToUnlock = (appStore: AppStore) => {
       navigator
         .share({
           title: shareMessageTitle,
+          text: shareMessageText,
           url: config.shareLink,
         })
         .then(() => {
