@@ -1,5 +1,6 @@
 import Countdown from '../classes/components/Countdown'
 import { AppStore } from '../store'
+import { dispatchTrackEvent } from './events'
 
 type RaffleDraw = {
   drawDate: Date
@@ -24,14 +25,27 @@ const mockRaffleDraws: RaffleDraw[] = [
 const initRaffle = (state: AppStore, opts: RaffleBoardOpts) => {
   const render = () => {}
 
-  const refs = {
-    $board: $('[bun-element="raffle-board"]'),
-    $timer: $('[bun-element="raffle-board"]').find('[bun-element="countdown"]'),
-  }
+  if (window.util.getUrlParam('RaffleUS') === 'true') {
+    $('[bun-ref="plugin-raffle"]').show()
+    const refs = {
+      $board: $('[bun-element="raffle-board"]'),
+      $timer: $('[bun-element="raffle-board"]').find(
+        '[bun-element="countdown"]'
+      ),
+    }
 
-  const raffleBoardTimer = new Countdown(refs.$timer, {
-    end: mockRaffleDraws[0].drawDate.getTime(),
-  })
+    const raffleBoardTimer = new Countdown(refs.$timer, {
+      end: mockRaffleDraws[0].drawDate.getTime(),
+    })
+
+    dispatchTrackEvent('viewed_raffle_tiles')
+
+    $('[data-modal-trigger="raffle-explainer-modal"]').click(function () {
+      dispatchTrackEvent('tapped_raffle_how_does_it_work')
+    })
+  } else {
+    $('[bun-ref="plugin-raffle"]').hide()
+  }
 }
 
 try {

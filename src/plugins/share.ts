@@ -16,11 +16,6 @@ enum ShareSupport {
   None = 'none',
 }
 
-type ShareToOnlockOpts = {
-  shareMessageTitle: string
-  shareMessageText: string
-}
-
 const updateShareToUnlock = (appStore: AppStore) => {
   console.log(`Module loaded: Share to Unlock`)
   const { getUrlParam, writable, updateClassesOfStyled, get } = window.util
@@ -54,7 +49,8 @@ const updateShareToUnlock = (appStore: AppStore) => {
   // Init state
   if (config.shareLink) {
     storeStatus.set(ShareStatus.Enabled)
-    dispatchTrackEvent('viewed_raffle_tiles')
+
+    // TODO: Update raffle tiles setup, should be viewed share
     if (config.isRevealed) storeStatus.set(ShareStatus.Unlocked)
   }
 
