@@ -25,7 +25,7 @@ const mockRaffleDraws: RaffleDraw[] = [
 const initRaffle = (state: AppStore, opts: RaffleBoardOpts) => {
   const render = () => {}
 
-  if (window.util.getUrlParam('RaffleUS') === 'true') {
+  if (window.util.getUrlParam('RaffleUS') === 'Available') {
     $('[bun-ref="plugin-raffle"]').show()
 
     if (!window.util.getUrlParam('shareLink')) {
