@@ -15,11 +15,11 @@ type RaffleBoardOpts = {
 const mockRaffleDrawings = [{}]
 
 const mockRaffleDraws: RaffleDraw[] = [
-  { drawDate: new Date('2022-08-08T10:00Z'), winners: [] },
-  { drawDate: new Date('2022-08-03T10:00Z'), winners: [] },
-  { drawDate: new Date('2022-08-04T10:00Z'), winners: [] },
-  { drawDate: new Date('2022-08-05T10:00Z'), winners: [] },
-  { drawDate: new Date('2022-08-06T10:00Z'), winners: [] },
+  { drawDate: new Date('2022-08-08T14:00Z'), winners: [] },
+  { drawDate: new Date('2022-08-09T14:00Z'), winners: [] },
+  { drawDate: new Date('2022-08-10T14:00Z'), winners: [] },
+  { drawDate: new Date('2022-08-11T14:00Z'), winners: [] },
+  { drawDate: new Date('2022-08-12T14:00Z'), winners: [] },
 ]
 
 const initRaffle = (state: AppStore, opts: RaffleBoardOpts) => {
@@ -38,8 +38,18 @@ const initRaffle = (state: AppStore, opts: RaffleBoardOpts) => {
         '[bun-element="countdown"]'
       ),
     }
+
+    const getUpcomingDrawDate = () => {
+      const upcomingStamp = mockRaffleDraws
+        .find((draw) => draw.drawDate.getTime() > Date.now())
+        ?.drawDate.getTime()
+      return upcomingStamp
+        ? upcomingStamp
+        : mockRaffleDraws[mockRaffleDraws.length - 1].drawDate.getTime()
+    }
+
     const raffleBoardTimer = new Countdown(refs.$timer, {
-      end: mockRaffleDraws[0].drawDate.getTime(),
+      end: getUpcomingDrawDate(),
     })
 
     dispatchTrackEvent('viewed_raffle_tiles')

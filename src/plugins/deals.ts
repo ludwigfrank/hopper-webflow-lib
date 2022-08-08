@@ -42,6 +42,16 @@ const pluginDeals = (appStore: AppStore) => {
           dealCollection.collectionEnd.toString()
         )
 
+        // If we replace the link
+        if (appStore.modules.replaceLinks) {
+          const replaceLink = appStore.modules.replaceLinks.find((obj) => {
+            return deal.cmsData.slug.includes(obj.selector)
+          })
+          if (replaceLink) {
+            url.href = replaceLink.url
+          }
+        }
+
         $linkElement.attr('href', url.href)
       })
   })

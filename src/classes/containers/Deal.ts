@@ -42,6 +42,4 @@ export default class Deal extends Container<DealData> {
   get freezeStatus() {
     return this._freezeStatus
   }
-
-  updateUrl() {}
 }

@@ -5,6 +5,7 @@ export type AppStore = {
     endStamp: number
   }
   modules: {
+    replaceLinks?: { selector: string; url: string }[]
     shareToUnlock?: {
       shareMessageTitle: string
       shareMessageText: string
@@ -19,6 +20,32 @@ const appStore: AppStore = {
     endStamp: new Date('08/11/2022 11:59:00 PST').getTime(),
   },
   modules: {
+    replaceLinks: [
+      {
+        selector: 'san-diego',
+        url: 'https://deal-drop-landing.webflow.io/destinations/san-diego?showDeals=false',
+      },
+      {
+        selector: 'punta-cana',
+        url: 'https://deal-drop-landing.webflow.io/destinations/dominican-republic?showDeals=false',
+      },
+      {
+        selector: 'santo-domingo',
+        url: 'https://deal-drop-landing.webflow.io/destinations/dominican-republic?showDeals=false',
+      },
+      {
+        selector: 'barbados',
+        url: 'https://deal-drop-landing.webflow.io/destinations/barbados-summer-savings?showDeals=false',
+      },
+      {
+        selector: 'san-juan',
+        url: 'https://deal-drop-landing.webflow.io/destinations/puerto-rico?showDeals=false&experiment=skip-landing&skip-landing=true',
+      },
+      {
+        selector: 'fiji',
+        url: 'https://deal-drop-landing.webflow.io/destinations/fiji-airways?showDeals=false',
+      },
+    ],
     shareToUnlock: {
       shareMessageTitle: 'August 8/8 Sale is on right now!',
       shareMessageText:
