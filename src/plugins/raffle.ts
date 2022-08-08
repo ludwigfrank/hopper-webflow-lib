@@ -15,11 +15,11 @@ type RaffleBoardOpts = {
 const mockRaffleDrawings = [{}]
 
 const mockRaffleDraws: RaffleDraw[] = [
-  { drawDate: new Date('2022-08-08T14:00Z'), winners: [] },
-  { drawDate: new Date('2022-08-09T14:00Z'), winners: [] },
-  { drawDate: new Date('2022-08-10T14:00Z'), winners: [] },
-  { drawDate: new Date('2022-08-11T14:00Z'), winners: [] },
-  { drawDate: new Date('2022-08-12T14:00Z'), winners: [] },
+  { drawDate: new Date('2022-08-08T15:00Z'), winners: [] },
+  { drawDate: new Date('2022-08-09T15:00Z'), winners: [] },
+  { drawDate: new Date('2022-08-10T15:00Z'), winners: [] },
+  { drawDate: new Date('2022-08-11T15:00Z'), winners: [] },
+  { drawDate: new Date('2022-08-12T15:00Z'), winners: [] },
 ]
 
 const initRaffle = (state: AppStore, opts: RaffleBoardOpts) => {
