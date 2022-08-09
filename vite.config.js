@@ -7,7 +7,7 @@ const baseConfig = {
     manifest: true,
     rollupOptions: {
       input: {
-        main: './src/main.js',
+        main: './src/main.ts',
         /* 'plugins/modals': './src/plugins/modals.ts',
         'plugins/utils': './src/plugins/utils.ts',
         'plugins/deals': './src/plugins/deals.ts',
