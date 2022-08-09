@@ -35,6 +35,7 @@ export default class Deal extends Container<DealData> {
   }
 
   set freezeStatus(status: FreezeStatus) {
+    console.log(status)
     this.updateClasses([status], 'status-freeze')
     this._freezeStatus = status
   }

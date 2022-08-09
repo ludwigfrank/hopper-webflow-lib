@@ -1,6 +1,6 @@
 import Countdown from '../classes/components/Countdown'
 import DealCollection from '../classes/containers/DealCollection'
-import Deal, { FreezeStatus } from '../classes/containers/Deal'
+import Deal from '../classes/containers/Deal'
 import { DateStore } from '../classes/core/DateStore'
 
 const dateStore = new DateStore({
@@ -28,7 +28,6 @@ export const updateDealCollections = () => {
 
       const $linkElement = deal.getChildEl('.hp-card__link')
       const href = $linkElement.attr('href')
-      console.log(deal)
 
       const url = new URL(window.location.origin + href)
       url.searchParams.append(

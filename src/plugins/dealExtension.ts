@@ -1,3 +1,8 @@
+import { FreezeStatus } from '../classes/containers/Deal'
+import Collection, {
+  collections,
+  CollectionStatus,
+} from '../classes/containers/DealCollection'
 import { AppStore } from '../store'
 
 function pluginDealExtension(appStore: AppStore): void {
@@ -16,18 +21,28 @@ function pluginDealExtension(appStore: AppStore): void {
     const extendedDealsCodes =
       decodeURIComponent(frozenUrlParamValue).split(',')
 
-    console.log(extendedDealsCodes)
-
     extendedDealsCodes.forEach((code: string) => {
       // Take the first deal that matches the code
-      const deal = $(`[data-airport-code=${code}]`)
-        .eq(0)
-        .closest('[bun-element="deal"]')
-        .detach()
+      const deals = $(`[data-airport-code=${code}]`).closest(
+        '[bun-element="deal"]'
+      )
 
+      deals.parent().hide()
+
+      const deal = deals.eq(0)
       deal.find('.freeze-button').hide()
       // Move the deal to the collection
       refs.$dealExtensionItemsList.append(deal)
+
+      // TODO: Update time left value
+    })
+
+    collections.forEach((collection) => {
+      if (collection.collectionStatus === CollectionStatus.Running) {
+        collection.deals.forEach((deal) => {
+          deal.freezeStatus = FreezeStatus.Enabled
+        })
+      }
     })
   }
 }

@@ -1,7 +1,7 @@
 import { AppStore } from '../store'
 import Countdown from '../classes/components/Countdown'
 import DealCollection from '../classes/containers/DealCollection'
-import Deal, { FreezeStatus } from '../classes/containers/Deal'
+import Deal from '../classes/containers/Deal'
 
 const pluginDeals = (appStore: AppStore) => {
   const { startStamp, endStamp } = appStore.dateTime
@@ -33,10 +33,6 @@ const pluginDeals = (appStore: AppStore) => {
       .find(`[bun-element="${Deal.elementId}"]`)
       .each(function () {
         const deal = new Deal($(this), {})
-
-        if (deal.cmsData.extensionDeeplink) {
-          deal.freezeStatus = FreezeStatus.Enabled
-        }
 
         const $linkElement = deal.$ref.find('[bun-ref="card-link"]').eq(0)
         const href = $linkElement.attr('href')
