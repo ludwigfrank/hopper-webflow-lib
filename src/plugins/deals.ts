@@ -24,6 +24,11 @@ const pluginDeals = (appStore: AppStore) => {
       start: dealCollection.collectionStart,
     })
 
+    // Move deal collection to the end of list if expired
+    if (dealCollection.collectionEnd < Date.now()) {
+      $dealCollectionWrapper.parent().append($dealCollectionWrapper)
+    }
+
     $dealCollectionWrapper
       .find(`[bun-element="${Deal.elementId}"]`)
       .each(function () {
