@@ -17,7 +17,7 @@ const appStore: AppStore = {
   debug: true,
   dateTime: {
     startStamp: new Date('08/08/2022 14:00:00 GMT').getTime(),
-    endStamp: new Date('08/11/2022 11:59:00 PST').getTime(),
+    endStamp: new Date('08/12/2022 07:00:00 GMT').getTime(),
   },
   modules: {
     replaceLinks: [
